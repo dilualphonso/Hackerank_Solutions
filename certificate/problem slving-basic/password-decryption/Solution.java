@@ -1,16 +1,17 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
-public class PasswordEncrypt {
+public class differentPasswordEncrypt {
 
     public static void main(String[] args) {
 
         Scanner myScanner = new Scanner(System.in);
         String word = myScanner.nextLine();
 
-
+        int m;
         char encryptedWord;
-        String finalword = "";
+        // String finalword = "";
+
+
         String number = "";
         String numberOnly = word.replaceAll("[^1-9]", "");
 
@@ -23,47 +24,30 @@ public class PasswordEncrypt {
 
         }
 
-        word = word.replaceAll("[^A-Za-z0]", "");
+        word = word.replaceAll("[1-9]", "");
         char[] charArray = word.toCharArray();
 
-        for (int i = 0; i < charArray.length - 1; i++) {
+        for (m = 0; m < charArray.length; m++) {
+            if (charArray[m] == '*') {
+                //   char [] finalarray= finalword.toCharArray();
+                encryptedWord = charArray[m - 1];
+                charArray[m - 1] = charArray[m - 2];
+                charArray[m - 2] = encryptedWord;
 
-            for (int j = i + 1; j <= i + 1; j++) {
-                if (charArray[i] >= 'A' && charArray[i] <= 'Z') {
-                    if (charArray[j] >= 'a' && charArray[j] <= 'z') {
-                        encryptedWord = charArray[i];
-                        charArray[i] = charArray[j];
-                        charArray[j] = encryptedWord;
-                        finalword = finalword + charArray[i];
-                        break;
-                    } //else {
-                    finalword = finalword + charArray[i];
-
-                    //}
-                } else {
-                    finalword = finalword + charArray[i];
-                }
-
-
-                // else {
-
-                //  finalword = finalword + charArray[i];
-                // }
-
-
-                //}
 
             }
 
 
         }
+        System.out.println(charArray);
 
-//        if(charArray.length%2==0){
-        finalword = finalword + charArray[charArray.length - 1];
-//        }
-        //  for (int i=0;i<number.length();i++) {
-        String value = "";
-        //String numberValue = "";
+        String finalword = new String(charArray);
+        //  finalword=charArray.toString();
+
+        finalword = finalword.replaceAll("[*]", "");
+
+        System.out.println(finalword);
+
         int i = 0;
 
         for (int j = 0; j < finalword.length(); j++) {
@@ -83,18 +67,10 @@ public class PasswordEncrypt {
             }
 
         }
-        // }
-
-        // }
-
-
-        System.out.println(finalword);
-        // System.out.println(num);
+ 
 
         System.out.println(value);
 
 
     }
 }
-
-
